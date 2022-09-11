@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+.controls {
+  width: 100%;
+  max-width: 200px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon,
+.page {
+  color: black;
+  font-size: 1.3rem;
+}
+.mark {
+  padding: 0 0.25rem;
+}
+.button,
+.mark {
+  background-color: rgb(242, 92, 92);
+}
+
+@media only screen and (min-width: 48rem) {
+  .icon,
+  .page {
+    font-size: 2rem;
+    word-spacing: 0.1rem;
+  }
+  .controls {
+    max-width: 300px;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  .controls {
+    max-width: 400px;
+  }
+  .icon,
+  .page {
+    font-size: 3rem;
+  }
+}

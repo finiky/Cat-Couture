@@ -1,0 +1,306 @@
+openapi: 3.0.2
+info:
+  version: '1.0'
+  title: Welcome to the Products API!
+  description: This API allows user to handle products
+  contact:
+    name: akshay
+    email: akn2612@gmail.com
+servers:
+  - url: 'http://localhost:5001/api'
+    description: Development server
+  - url: 'https://cat-couture-server-apgh.onrender.com/api'
+    description: Production server
+paths:
+  /products:
+    get:
+      summary: Returns a list of products
+      description: Get a list of products
+      operationId: get-products
+      tags:
+        - products
+      parameters:
+        - schema:
+            type: integer
+            minimum: 1
+            default: 1
+          in: query
+          name: page
+          description: The page number to be displayed
+          required: true
+        - schema:
+            type: integer
+            minimum: 10
+            default: 10
+            maximum: 100
+          in: query
+          name: limit
+          description: The number of products to return
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+                  currentPage:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  itemsPerPage:
+                    type: integer
+                  totalItems:
+                    type: integer
+                required:
+                  - products
+                  - currentPage
+                  - totalPages
+                  - itemsPerPage
+                  - totalItems
+              examples:
+                example-1:
+                  value:
+                    products:
+                      - id: 1
+                        name: Angel Wings Harness
+                        description: The purrrfect accessory to take your kitty to the next level.
+                        price: $10.00
+                        categoryName: Accessories
+                        imageName: cat-photo_0000.jpg
+                        imageDescription: Wings harness
+                        discountValue: 10
+                        discountType: "1"
+                      - id: 2
+                        name: Angel Wings Harness
+                        description: The purrrfect accessory to take your kitty to the next level.
+                        price: $10.00
+                        categoryName: Accessories
+                        imageName: cat-photo_0000.jpg
+                        imageDescription: Wings harness
+                        discountValue: 10
+                        discountType: "1"
+                      - id: 3
+                        name: Angel Wings Harness
+                        description: The purrrfect accessory to take your kitty to the next level.
+                        price: $10.00
+                        categoryName: Accessories
+                        imageName: cat-photo_0000.jpg
+                        imageDescription: Wings harness
+                        discountValue: 10
+                        discountType: "1"
+                      - id: 4
+                        name: Angel Wings Harness
+                        description: The purrrfect accessory to take your kitty to the next level.
+                        price: $10.00
+                        categoryName: Accessories
+                        imageName: cat-photo_0000.jpg
+                        imageDescription: Wings harness
+                        discountValue: 10
+                        discountType: "1"
+                      - id: 5
+                        name: Angel Wings Harness
+                        description: The purrrfect accessory to take your kitty to the next level.
+                        price: $10.00
+                        categoryName: Accessories
+                        imageName: cat-photo_0000.jpg
+                        imageDescription: Wings harness
+                        discountValue: 0
+                        discountType: null
+                      - id: 6
+                        name: Angel Wings Harness
+                        description: The purrrfect accessory to take your kitty to the next level.
+                        price: $10.00
+                        categoryName: Accessories
+                        imageName: cat-photo_0000.jpg
+                        imageDescription: Wings harness
+                        discountValue: 0
+                        discountType: null
+                      - id: 7
+                        name: Angel Wings Harness
+                        description: The purrrfect accessory to take your kitty to the next level.
+                        price: $10.00
+                        categoryName: Accessories
+                        imageName: cat-photo_0000.jpg
+                        imageDescription: Wings harness
+                        discountValue: 0
+                        discountType: null
+                      - id: 8
+                        name: Angel Wings Harness
+                        description: The purrrfect accessory to take your kitty to the next level.
+                        price: $10.00
+                        categoryName: Accessories
+                        imageName: cat-photo_0000.jpg
+                        imageDescription: Wings harness
+                        discountValue: 0
+                        discountType: null
+                      - id: 9
+                        name: Angel Wings Harness
+                        description: The purrrfect accessory to take your kitty to the next level.
+                        price: $10.00
+                        categoryName: Accessories
+                        imageName: cat-photo_0000.jpg
+                        imageDescription: Wings harness
+                        discountValue: 0
+                        discountType: null
+                      - id: 10
+                        name: Angel Wings Harness
+                        description: The purrrfect accessory to take your kitty to the next level.
+                        price: $10.00
+                        categoryName: Accessories
+                        imageName: cat-photo_0000.jpg
+                        imageDescription: Wings harness
+                        discountValue: 0
+                        discountType: null
+                    currentPage: 1
+                    totalPages: 10
+                    itemsPerPage: 10
+                    totalItems: 100
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /reports:
+    get:
+      summary: Returns a list of reports
+      description: Get a list of reports
+      operationId: get-reports
+      security:
+        - bearerAuth: []
+      tags:
+        - reports
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+              examples:
+                example-1:
+                  value:
+                    categoriesReport:
+                      - category: Party Outfits
+                        discountedProducts: 2
+                        totalProducts: 28
+                      - category: Tops
+                        discountedProducts: 0
+                        totalProducts: 13
+                    discountReport:
+                      - discountType: No Discount
+                        totalProducts: 91
+                      - discountType: percentageoff
+                        totalProducts: 4
+        '401':
+          description: Unauthenticated User
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Unauthorized User
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    Report:
+      type: object
+      properties:
+        categoriesReport:
+          type: array
+          items:
+            type: object
+            properties:
+              category:
+                type: string
+              discountedProducts:
+                type: number
+              totalProducts:
+                type: number
+            required:
+              - category
+              - discountedProducts
+              - totalProducts
+        discountReport:
+          type: array
+          items:
+            type: object
+            properties:
+              discountType:
+                type: string
+              totalProducts:
+                type: number
+            required:
+              - discountType
+              - totalProducts
+      required:
+        - categoriesReport
+        - discountReport
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: string
+        categoryName:
+          type: string
+          nullable: true
+        imageName:
+          type: string
+          nullable: true
+        imageDescription:
+          type: string
+          nullable: true
+        discountValue:
+          type: number
+          nullable: true
+        discountType:
+          type: string
+          nullable: true
+      required:
+        - id
+        - name
+        - description
+        - price
+        - categoryName
+        - imageName
+        - imageDescription
+        - discountValue
+        - discountType
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+tags:
+  - name: products

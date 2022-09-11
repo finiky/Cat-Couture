@@ -1,0 +1,44 @@
+.paragraph {
+  padding: 0.5rem;
+  width: 80%;
+  margin: 1rem auto;
+  border: solid black 3px;
+}
+.select {
+  display: inline;
+  margin: 0 auto;
+  border: solid black 1px;
+}
+.select,
+.paragraph {
+  background-color: rgb(242, 92, 92);
+  color: black;
+  border-radius: 2rem;
+  text-align: center;
+  font-size: 1.25rem;
+}
+.mainLayout {
+  background-color: grey;
+}
+.mainContent {
+  list-style-type: none;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 4rem;
+  margin: 0 auto;
+  margin-top: 5rem;
+}
+@media only screen and (min-width: 48rem) {
+  .select,
+  .paragraph {
+    font-size: 2rem;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  .mainContent {
+    width: 85%;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 8rem;
+  }
+}

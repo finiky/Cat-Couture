@@ -1,0 +1,11 @@
+.container {
+  width: auto;
+  overflow: scroll;
+}
+.table {
+  color: #333333;
+  background: #ffffff;
+  border: 1px solid grey;
+  border-collapse: collapse;
+  width: 100%;
+}

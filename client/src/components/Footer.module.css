@@ -1,0 +1,24 @@
+.footer {
+  width: 100%;
+  background-color: rgba(184, 184, 184, 0.933);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.footerItem {
+  padding: 1rem 0.5rem;
+  margin: 0;
+  color: black;
+}
+@media only screen and (min-width: 48rem) {
+  .footer {
+    font-size: 2rem;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  .footer {
+    font-size: 3rem;
+  }
+}
