@@ -10,8 +10,6 @@
 
 ## Scenario
 
-Your tech lead has become tied up dealing with last minute issues on another project, and has asked you to step in and complete a piece of work for one of your loyal clients, “Cat Couture”.
-
 Cat Couture is an online shop that specializes in the latest cat fashion. The client has asked for:
 
 - A pagination feature, so that their customers can better view and link to the increasing variety of costumes that the shop now stocks
