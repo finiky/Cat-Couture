@@ -16,7 +16,7 @@ services:
   - type: web
     name: api
     env: docker # Will read api Dockerfile?
-    rootDir: api
+    rootDir: server
     region: singapore
     envVars:
       - key: API_PORT
